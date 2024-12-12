@@ -10,12 +10,12 @@ public class InputView {
     }
 
     public String readWeekdayWorkingOrder() {
-        System.out.print("평일 비상 근무 순번대로 사원 닉네임을 입력하세요>");
+        System.out.print("평일 비상 근무 순번대로 사원 닉네임을 입력하세요> ");
         return readString();
     }
 
     public String readHolidayWorkingOrder() {
-        System.out.print("휴일 비상 근무 순번대로 사원 닉네임을 입력하세요>");
+        System.out.print("휴일 비상 근무 순번대로 사원 닉네임을 입력하세요> ");
         return readString();
     }
 

@@ -24,6 +24,7 @@ public class OnCallClient {
     public void run() {
         WorkingMonthResponse workingMonth = createWorkingMonth();
         List<WorkingScheduleResponse> workingScheduleResponse = createWorkingSchedule(workingMonth);
+        outputView.printWorkingSchedule(workingScheduleResponse);
     }
 
     private WorkingMonthResponse createWorkingMonth() {

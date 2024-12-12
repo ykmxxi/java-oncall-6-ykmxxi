@@ -52,7 +52,7 @@ public class OnCallService {
         for (int day = 1; day <= workingMonth.calculateEndDay(); day++) {
             int month = workingMonth.month().getValue();
             String dayOfWeek = workingMonth.getKoreanDayOfWeek(day);
-            String worker = monthSchedule.get(day).worker();
+            String worker = monthSchedule.get(day - 1).worker();
             boolean isPublicHoliday = PublicHoliday.isPublicHoliday(month, day);
             responses.add(new WorkingScheduleResponse(month, day, dayOfWeek, worker, isPublicHoliday));
         }
