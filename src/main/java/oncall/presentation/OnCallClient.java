@@ -31,8 +31,16 @@ public class OnCallClient {
         return RetryHandler.retry(() -> {
             List<String> workingMonthInput = splitInput(inputView.readWorkingMonth());
             return onCallService.createWorkingMonth(
-                    Integer.parseInt(workingMonthInput.getFirst()), workingMonthInput.getLast());
+                    parseInt(workingMonthInput), workingMonthInput.getLast());
         }, outputView);
+    }
+
+    private int parseInt(final List<String> workingMonthInput) {
+        try {
+            return Integer.parseInt(workingMonthInput.getFirst());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("숫자를 입력해 주세요.");
+        }
     }
 
     private List<WorkingScheduleResponse> createWorkingSchedule(final WorkingMonthResponse workingMonthResponse) {
