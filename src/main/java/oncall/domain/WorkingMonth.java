@@ -36,5 +36,13 @@ public class WorkingMonth {
     public int calculateEndDay() {
         return month.length(NO_LEAP_YEAR);
     }
-    
+
+    public Month month() {
+        return month;
+    }
+
+    public DayOfWeek startDayOfWeek() {
+        return startDayOfWeek;
+    }
+
 }
