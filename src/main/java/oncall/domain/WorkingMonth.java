@@ -3,6 +3,8 @@ package oncall.domain;
 import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.Month;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class WorkingMonth {
 
@@ -35,6 +37,11 @@ public class WorkingMonth {
 
     public int calculateEndDay() {
         return month.length(NO_LEAP_YEAR);
+    }
+
+    public String getKoreanDayOfWeek(final int day) {
+        DayOfWeek dayOfWeek = startDayOfWeek.plus(day - 1);
+        return dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.KOREA);
     }
 
     public Month month() {

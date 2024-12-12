@@ -31,6 +31,10 @@ public class Worker {
         workingCount++;
     }
 
+    public String name() {
+        return name;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {

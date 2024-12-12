@@ -29,7 +29,8 @@ public class WorkingSchedule {
             }
             addSchedule(monthSchedule, weekdaySchedule);
         }
-        return monthSchedule;
+        return monthSchedule.stream()
+                .toList();
     }
 
     private List<Working> initMonthSchedule(final WorkingMonth workingMonth, final int startDay) {

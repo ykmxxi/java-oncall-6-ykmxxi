@@ -16,6 +16,10 @@ public class Working {
         worker.work();
     }
 
+    public String worker() {
+        return worker.name();
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {
