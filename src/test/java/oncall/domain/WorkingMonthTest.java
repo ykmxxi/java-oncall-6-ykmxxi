@@ -1,12 +1,13 @@
 package oncall.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class WorkingMonthTest {
@@ -32,6 +33,16 @@ class WorkingMonthTest {
     @Test
     void 근무_배정_월_생성_성공() {
         assertDoesNotThrow(() -> new WorkingMonth(1, "월"));
+    }
+
+    @DisplayName("해당 월의 마지막 날자를 알려준다.")
+    @CsvSource(value = {"1,31", "2,28", "3,31", "4,30", "5,31", "6,30",
+            "7,31", "8,31", "9,30", "10,31", "11,30", "12,31"})
+    @ParameterizedTest
+    void 해당_월의_마지막_날자를_알려준다(int month, int endDay) {
+        WorkingMonth workingMonth = new WorkingMonth(month, "월");
+
+        assertThat(workingMonth.calculateEndDay()).isEqualTo(endDay);
     }
 
 }

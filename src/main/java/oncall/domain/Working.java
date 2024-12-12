@@ -2,7 +2,7 @@ package oncall.domain;
 
 import java.util.Objects;
 
-public class Working implements Comparable<Working> {
+public class Working {
 
     private final Worker worker;
     private final WorkingOrder workingOrder;
@@ -12,13 +12,8 @@ public class Working implements Comparable<Working> {
         this.workingOrder = workingOrder;
     }
 
-    @Override
-    public int compareTo(final Working o) {
-        int compareWorkCount = this.worker.compareTo(o.worker);
-        if (compareWorkCount != 0) {
-            return compareWorkCount;
-        }
-        return this.workingOrder.compareTo(o.workingOrder);
+    public void increaseWorkCount() {
+        worker.work();
     }
 
     @Override

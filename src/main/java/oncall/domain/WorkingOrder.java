@@ -1,6 +1,8 @@
 package oncall.domain;
 
-public class WorkingOrder implements Comparable<WorkingOrder> {
+import java.util.Objects;
+
+public class WorkingOrder {
 
     private static final int MAX_WORKER_COUNT = 35;
 
@@ -18,8 +20,19 @@ public class WorkingOrder implements Comparable<WorkingOrder> {
     }
 
     @Override
-    public int compareTo(final WorkingOrder o) {
-        return this.order - o.order;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof WorkingOrder that)) {
+            return false;
+        }
+        return order == that.order;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(order);
     }
 
     @Override

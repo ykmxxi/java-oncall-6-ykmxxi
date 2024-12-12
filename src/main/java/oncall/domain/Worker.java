@@ -2,7 +2,7 @@ package oncall.domain;
 
 import java.util.Objects;
 
-public class Worker implements Comparable<Worker> {
+public class Worker {
 
     private static final int MAX_NAME_LENGTH = 5;
 
@@ -27,9 +27,8 @@ public class Worker implements Comparable<Worker> {
         }
     }
 
-    @Override
-    public int compareTo(final Worker o) {
-        return this.workingCount - o.workingCount;
+    public void work() {
+        workingCount++;
     }
 
     @Override

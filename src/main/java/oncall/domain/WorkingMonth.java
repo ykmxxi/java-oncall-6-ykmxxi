@@ -6,6 +6,8 @@ import java.time.Month;
 
 public class WorkingMonth {
 
+    private static final boolean NO_LEAP_YEAR = false;
+
     private final Month month;
     private final DayOfWeek startDayOfWeek;
 
@@ -31,4 +33,8 @@ public class WorkingMonth {
         return targetDayOfWeek.equals(DayOfWeek.SATURDAY) || targetDayOfWeek.equals(DayOfWeek.SUNDAY);
     }
 
+    public int calculateEndDay() {
+        return month.length(NO_LEAP_YEAR);
+    }
+    
 }
