@@ -12,7 +12,7 @@ class WorkerTest {
     @ValueSource(strings = {"", " ", "루루루루루루", "루 루"})
     @ParameterizedTest
     void 근무자_생성_실패(String name) {
-        assertThatThrownBy(() -> new Worker(name, 1, 1))
+        assertThatThrownBy(() -> new Worker(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
