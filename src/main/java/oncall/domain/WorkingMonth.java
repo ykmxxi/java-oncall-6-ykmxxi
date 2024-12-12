@@ -22,4 +22,13 @@ public class WorkingMonth {
         }
     }
 
+    public boolean isHoliday(final int targetDay) {
+        DayOfWeek targetDayOfWeek = startDayOfWeek.plus(targetDay - 1);
+        return isWeekend(targetDayOfWeek) || PublicHoliday.isPublicHoliday(month.getValue(), targetDay);
+    }
+
+    private boolean isWeekend(final DayOfWeek targetDayOfWeek) {
+        return targetDayOfWeek.equals(DayOfWeek.SATURDAY) || targetDayOfWeek.equals(DayOfWeek.SUNDAY);
+    }
+
 }

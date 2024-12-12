@@ -17,6 +17,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class KoreaDayOfWeekTest {
@@ -34,6 +35,15 @@ class KoreaDayOfWeekTest {
         assertThatThrownBy(() -> KoreaDayOfWeek.getDayOfWeekFromKorean("워"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 요일 입력 값입니다.");
+    }
+
+    @DisplayName("일 숫자 값을 입력하면 휴일(주말 or 공휴일)인지 확인한다")
+    @CsvSource(value = {"1,false", "5,true", "6,true"})
+    @ParameterizedTest
+    void 휴일인지_확인(int targetDay, boolean expected) {
+        WorkingMonth workingMonth = new WorkingMonth(5, "월");
+
+        assertThat(workingMonth.isHoliday(targetDay)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideKoreanAndExpected() {
